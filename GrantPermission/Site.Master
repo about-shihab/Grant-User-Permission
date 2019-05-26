@@ -1,0 +1,152 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="GrantPermission.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head id="Head1" runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title><%: Page.Title %> New User Permission</title>
+    <link href="<%=ResolveUrl("~/Content/materialicon.css") %>" rel="stylesheet" />
+    <link href="<%=ResolveUrl("~/Content/font-awesome.min.css") %>" rel="stylesheet" />
+    
+    <link href="<%=ResolveUrl("~/assets/css/material-dashboard.css?v=2.1.1")%>" rel="stylesheet" />
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link rel="shortcut icon" type="image/x-icon"  href="<%=ResolveUrl("~/favicon.ico") %>"/>
+    
+
+    
+   
+
+    <script src="<%=ResolveUrl("~/Scripts/WebForms/MSAjax/MicrosoftAjax.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Scripts/WebForms/MSAjax/MicrosoftAjaxWebForms.js") %>"></script>
+
+    <script src="<%=ResolveUrl("~/Scripts/jquery-3.3.1.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Scripts/bootstrap.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Scripts/respond.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Scripts/WebForms/WebForms.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Scripts/WebForms/WebUIValidation.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Scripts/WebForms/GridView.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Scripts/WebForms/DetailsView.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Scripts/WebForms/TreeView.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Scripts/WebForms/WebParts.js") %>"></script>
+    <script src="<%=ResolveUrl("~/Scripts/WebForms/Focus.js") %>"></script>
+
+    <script src="<%=ResolveUrl("~/assets/js/core/popper.min.js") %>"></script>
+    <script src="<%=ResolveUrl("~/assets/js/core/bootstrap-material-design.min.js") %>"></script>
+
+    <script src="<%=ResolveUrl("~/assets/js/plugins/perfect-scrollbar.jquery.min.js") %>"></script>
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server" EnablePageMethods="true">
+            <Scripts>
+            </Scripts>
+        </asp:ScriptManager>
+
+
+        <%--sidebar--%>
+        <div class="wrapper ">
+            <div class="sidebar" data-color="purple" data-background-color="white" data-image="~/assets/img/sidebar-1.jpg">
+
+                <div class="logo" style="margin-left:24px">
+                    <asp:HyperLink ID="link" runat="server">
+                        <asp:Image   ImageAlign="Middle" ID="img" runat="server" ImageUrl="~/assets/img/logo_sebl.jpg" Width="200px" />
+                        
+                    </asp:HyperLink>
+                </div>
+                <div class="sidebar-wrapper navbar-absolute" >
+                    <ul class="nav">
+                        <li class="nav-item active  ">
+                            <a class="nav-link" href="PermissionRequestUI">
+                                <i class="material-icons">dashboard</i>
+                                <p>Request For Permission</p>
+                            </a>
+                        </li>
+  
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="main-panel" style="background: whitesmoke;">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-sm bg-primary  fixed-top " style="margin-left: 260px">
+                    <div class="container">
+                        <div class="navbar-translate">
+                        <a class="navbar-brand" href="RegisteredUserUI">New User Permission</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                            <span class="navbar-toggler-bar navbar-kebab"></span>
+                        </button>
+                            </div>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="<%=ResolveUrl("~/UI/LoggedUserUI") %>">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <%--<li class="nav-item">
+                                    <a class="nav-link" href="PendingRequestTabUI.aspx">Pending Request</a>
+                                </li>--%>
+                            </ul>
+                            <div class="form-inline ml-auto">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">account_circle</i>&nbsp
+                                        <asp:Label ID="userNameLabel" runat="server" Text=""></asp:Label>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">
+                                           <%--<strong>UserID <i class="material-icons">label_important </i> </strong> --%>
+                                            <i class="material-icons">account_balance</i>&nbsp
+                                            <asp:Label ID="branchNameLabel" runat="server" Text=""></asp:Label>
+
+                                        </a>
+                                        <%--<a class="dropdown-item" href="#">Another </a>--%>
+                                        
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="LogOut.aspx">
+                                            <i class="material-icons">power_settings_new </i>Log Out</a>&nbsp
+                                            <%--<asp:Image ImageAlign="Middle" ID="Image1" runat="server" ImageUrl="~/icon/user.png" Height="20px" />--%>
+                                    </div>
+                                <div class="col-md-2"></div>
+
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+
+                <!-- End Navbar -->
+                <div class="content" style="margin-top: 30px;">
+                    <div class="container-fluid" style="padding:2px">
+                        <div class="container body-content">
+
+                          
+
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                            <hr />
+                        </div>
+                    </div>
+                    <footer>
+                        <p>&copy; <%: DateTime.Now.Year %> - Grant User Permission</p>
+                    </footer>
+                </div>
+  
+
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>
